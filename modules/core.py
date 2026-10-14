@@ -26,6 +26,7 @@ except ImportError:
 import modules.globals
 import modules.metadata
 import modules.ui as ui
+from modules import hand_portal
 from modules.processors.frame.core import get_frame_processors_modules, process_video_in_memory
 from modules.utilities import has_image_extension, is_image, is_video, detect_fps, create_video, extract_frames, get_temp_frame_paths, restore_audio, create_temp, move_temp, clean_temp, normalize_output_path
 
@@ -43,7 +44,8 @@ def parse_args() -> None:
     program.add_argument('-s', '--source', help='select an source image', dest='source_path')
     program.add_argument('-t', '--target', help='select an target image or video', dest='target_path')
     program.add_argument('-o', '--output', help='select output file or directory', dest='output_path')
-    program.add_argument('--frame-processor', help='pipeline of frame processors', dest='frame_processor', default=['face_swapper'], choices=['face_swapper', 'face_enhancer', 'face_enhancer_gpen256', 'face_enhancer_gpen512'], nargs='+')
+    program.add_argument('--frame-processor', help='pipeline of frame processors', dest='frame_processor', default=['face_swapper'], choices=['face_swapper', 'face_enhancer', 'face_enhancer_gpen256', 'face_enhancer_gpen512', 'hand_portal'], nargs='+')
+    program.add_argument('--hand-portal-filter', help='filter applied inside the hand portal', dest='hand_portal_filter', default='purple', choices=hand_portal.filter_names())
     program.add_argument('--keep-fps', help='keep original fps', dest='keep_fps', action='store_true', default=False)
     program.add_argument('--keep-audio', help='keep original audio', dest='keep_audio', action='store_true', default=True)
     program.add_argument('--keep-frames', help='keep temporary frames', dest='keep_frames', action='store_true', default=False)
@@ -101,6 +103,11 @@ def parse_args() -> None:
     #for ENHANCER tumblers:
     for enhancer_key in ('face_enhancer', 'face_enhancer_gpen256', 'face_enhancer_gpen512'):
         modules.globals.fp_ui[enhancer_key] = enhancer_key in args.frame_processor
+
+    modules.globals.hand_portal_filter = args.hand_portal_filter
+    if 'hand_portal' in args.frame_processor:
+        modules.globals.hand_portal = True
+        modules.globals.fp_ui['hand_portal'] = True
 
     # translate deprecated args
     if args.source_path_deprecated:
