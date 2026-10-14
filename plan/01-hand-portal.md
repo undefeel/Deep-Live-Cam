@@ -48,7 +48,7 @@ worktree через `orca.yaml`.
 
 ### 01-02 — Ядро `modules/hand_portal.py`
 
-- **Исполнитель:** haiku · **Статус:** in_progress · **Зависимости:** 01-01 · **Orca:** `task_be6c033bc45d`
+- **Исполнитель:** haiku · **Статус:** done · **Зависимости:** 01-01 · **Orca:** `task_be6c033bc45d`
 - **Файлы:** `modules/hand_portal.py` (новый), `modules/globals.py`,
   `tests/test_hand_portal.py` (новый)
 - **Описание:** вся логика портала в одном модуле. Публичный API (имена
@@ -99,7 +99,7 @@ worktree через `orca.yaml`.
 
 ### 01-03 — Фрейм-процессор и CLI
 
-- **Исполнитель:** haiku · **Статус:** todo · **Зависимости:** 01-02 · **Orca:** `task_258d6022d063`
+- **Исполнитель:** haiku · **Статус:** in_progress · **Зависимости:** 01-02 · **Orca:** `task_258d6022d063`
 - **Файлы:** `modules/processors/frame/hand_portal.py` (новый),
   `modules/processors/frame/core.py` (только `ALLOWED_PROCESSORS`),
   `modules/core.py` (только argparse и разбор аргументов),
@@ -122,7 +122,7 @@ worktree через `orca.yaml`.
 
 ### 01-04 — Интеграция в UI
 
-- **Исполнитель:** haiku · **Статус:** todo · **Зависимости:** 01-02 · **Orca:** `task_3fb88cfaafa4`
+- **Исполнитель:** haiku · **Статус:** in_progress · **Зависимости:** 01-02 · **Orca:** `task_3fb88cfaafa4`
 - **Файлы:** `modules/ui.py` (только точки интеграции)
 - **Описание:** в `_build_options_card` добавить переключатель `_Switch`
   «Hand Portal» (tooltip: «Frame a filter portal between both hands; pinch all
@@ -137,13 +137,16 @@ worktree через `orca.yaml`.
   Сам вызов портала в `_ProcessingThread` не добавлять: процессор `hand_portal`
   подхватывается существующим `get_frame_processors_modules` через `fp_ui`.
   Строки UI оборачивать в `_()`.
+  Дополнение при запуске: `modules.globals.webcam_preview_running` нигде не
+  выставлялся — превью должно ставить `True` при старте и `False` при закрытии
+  (иначе жест-щепоть не работает). Передано исполнителю сообщением.
 - **Критерии готовности:** `python -c "import modules.ui"` без ошибок;
   `compileall`, `ruff`, существующие тесты зелёные; diff `ui.py` — только
   перечисленные точки.
 
 ### 01-05 — Дополнительные фильтры
 
-- **Исполнитель:** antigravity · **Статус:** todo · **Зависимости:** 01-02 · **Orca:** `task_1852cd8197da`
+- **Исполнитель:** antigravity · **Статус:** in_progress · **Зависимости:** 01-02 · **Orca:** `task_1852cd8197da`
 - **Файлы:** `modules/hand_portal.py` (только секция фильтров, через
   `register_filter`/словарь `FILTERS`), `tests/test_hand_portal_filters.py` (новый)
 - **Описание:** добавить фильтры из референса после базовых, в этом порядке:
@@ -159,7 +162,7 @@ worktree через `orca.yaml`.
 
 ### 01-06 — Документация и локали
 
-- **Исполнитель:** antigravity · **Статус:** todo · **Зависимости:** 01-02 · **Orca:** `task_d83bdd65b867`
+- **Исполнитель:** antigravity · **Статус:** in_progress · **Зависимости:** 01-02 · **Orca:** `task_d83bdd65b867`
 - **Файлы:** `README.md`, `locales/*`
 - **Описание:** раздел «Hand Portal» в README: что делает, как включить в UI,
   жест-щепоть, список фильтров, CLI-пример
