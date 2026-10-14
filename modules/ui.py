@@ -67,6 +67,7 @@ from modules.face_analyser import (
     simplify_maps,
 )
 from modules.gettext import LanguageManager
+from modules import hand_portal
 from modules.gpu_processing import gpu_cvt_color, gpu_flip, gpu_resize
 from modules.processors.frame.core import get_frame_processors_modules
 from modules.utilities import (
@@ -327,6 +328,8 @@ def save_switch_states():
         "live_resizable": modules.globals.live_resizable,
         "fp_ui": modules.globals.fp_ui,
         "show_fps": modules.globals.show_fps,
+        "hand_portal": modules.globals.hand_portal,
+        "hand_portal_filter": modules.globals.hand_portal_filter,
         "mouth_mask": modules.globals.mouth_mask,
         "show_mouth_mask_box": modules.globals.show_mouth_mask_box,
         "mouth_mask_size": modules.globals.mouth_mask_size,
@@ -356,6 +359,12 @@ def load_switch_states():
         modules.globals.live_resizable = state.get("live_resizable", False)
         modules.globals.fp_ui = state.get("fp_ui", {"face_enhancer": False})
         modules.globals.show_fps = state.get("show_fps", False)
+        modules.globals.hand_portal = bool(state.get("hand_portal", False))
+        portal_filter = state.get("hand_portal_filter", "purple")
+        if portal_filter not in hand_portal.filter_names():
+            portal_filter = "purple"
+        modules.globals.hand_portal_filter = portal_filter
+        modules.globals.fp_ui["hand_portal"] = modules.globals.hand_portal
         # Mouth mask always starts disabled (slider at 0) on launch,
         # regardless of the persisted value — enable it explicitly each session.
         modules.globals.mouth_mask_size = 0.0
@@ -538,6 +547,12 @@ class MainWindow(QMainWindow):
         footer.mousePressEvent = lambda _e: webbrowser.open("https://deeplivecam.net")
         layout.addWidget(footer)
 
+        # A pinch gesture in the live preview changes the portal filter in the
+        # globals; poll for it so the combo box follows.
+        self._portal_sync_timer = QTimer(self)
+        self._portal_sync_timer.timeout.connect(self._sync_hand_portal_filter)
+        self._portal_sync_timer.start(500)
+
     # ── image row ────────────────────────────────────────────────────────
 
     def _build_image_row(self) -> QHBoxLayout:
@@ -630,19 +645,25 @@ class MainWindow(QMainWindow):
                                     _("Manually assign which source face maps to which target face"))
         self.sw_map_faces.toggled.connect(self._on_map_faces_toggled)
 
+        self.sw_hand_portal = _Switch(_("Hand Portal"), modules.globals.hand_portal,
+                                      _("Frame a filter portal between both hands; pinch all fingers to switch filter"))
+        self.sw_hand_portal.toggled.connect(self._on_hand_portal_toggled)
+
         # Layout: 2 columns of switches
         items = [
             self.sw_keep_fps, self.sw_keep_audio,
             self.sw_keep_frames, self.sw_many_faces,
             self.sw_map_faces, self.sw_show_fps,
             self.sw_poisson, self.sw_color_fix,
+            self.sw_hand_portal,
         ]
         for i, w in enumerate(items):
             grid.addWidget(w, i // 2, i % 2)
 
         # Face enhancer dropdown
+        enhancer_row = (len(items) + 1) // 2
         enhancer_label = QLabel(_("Face Enhancer:"))
-        grid.addWidget(enhancer_label, len(items) // 2, 0)
+        grid.addWidget(enhancer_label, enhancer_row, 0)
 
         self.cb_enhancer = QComboBox()
         self.cb_enhancer.addItems(["None", "GFPGAN", "GPEN-512", "GPEN-256"])
@@ -656,7 +677,18 @@ class MainWindow(QMainWindow):
         self.cb_enhancer.setCurrentText(initial)
         self.cb_enhancer.currentTextChanged.connect(self._on_enhancer_change)
         self.cb_enhancer.setToolTip(_("Select a face enhancement model (None = no enhancement)"))
-        grid.addWidget(self.cb_enhancer, len(items) // 2, 1)
+        grid.addWidget(self.cb_enhancer, enhancer_row, 1)
+
+        # Hand portal filter dropdown
+        portal_label = QLabel(_("Portal filter:"))
+        grid.addWidget(portal_label, enhancer_row + 1, 0)
+
+        self.cb_hand_portal_filter = QComboBox()
+        self.cb_hand_portal_filter.addItems(hand_portal.filter_names())
+        self.cb_hand_portal_filter.setCurrentText(modules.globals.hand_portal_filter)
+        self.cb_hand_portal_filter.currentTextChanged.connect(self._on_hand_portal_filter_change)
+        self.cb_hand_portal_filter.setToolTip(_("Filter applied inside the hand portal"))
+        grid.addWidget(self.cb_hand_portal_filter, enhancer_row + 1, 1)
 
         return card
 
@@ -944,6 +976,23 @@ class MainWindow(QMainWindow):
         save_switch_states()
         if not value:
             close_mapper_window()
+
+    def _on_hand_portal_toggled(self, value: bool) -> None:
+        modules.globals.hand_portal = value
+        modules.globals.fp_ui["hand_portal"] = value
+        save_switch_states()
+
+    def _on_hand_portal_filter_change(self, name: str) -> None:
+        modules.globals.hand_portal_filter = name
+        save_switch_states()
+
+    def _sync_hand_portal_filter(self) -> None:
+        current = modules.globals.hand_portal_filter
+        if self.cb_hand_portal_filter.currentText() == current:
+            return
+        self.cb_hand_portal_filter.blockSignals(True)
+        self.cb_hand_portal_filter.setCurrentText(current)
+        self.cb_hand_portal_filter.blockSignals(False)
 
     def _on_enhancer_change(self, choice: str) -> None:
         key_map = {
@@ -1360,6 +1409,7 @@ class WebcamPreviewWindow(QWidget):
         )
         self._capture_worker.start()
         self._processing_worker.start()
+        modules.globals.webcam_preview_running = True
 
         # Poll at ~2x camera fps so we never block but also don't burn CPU.
         poll_ms = max(1, min(16, int(500 / max(camera_fps, 1))))
@@ -1381,6 +1431,7 @@ class WebcamPreviewWindow(QWidget):
     def closeEvent(self, event) -> None:
         # __init__ can bail out before these exist (e.g. the camera fails to open),
         # and closeEvent still runs.
+        modules.globals.webcam_preview_running = False
         stop_event = getattr(self, "_stop_event", None)
         if stop_event is not None:
             stop_event.set()
