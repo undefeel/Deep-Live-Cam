@@ -1,31 +1,8 @@
 import importlib
-import sys
-import types
 import unittest
 
 
-class _FakeTqdm:
-    def __init__(self, *args, **kwargs):
-        pass
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, *exc):
-        return False
-
-    def update(self, n):
-        pass
-
-
 def _load_model_downloader():
-    sys.modules.setdefault("cv2", types.SimpleNamespace(IMREAD_COLOR=1))
-    sys.modules.setdefault(
-        "numpy",
-        types.SimpleNamespace(uint8=object, fromfile=lambda *_args, **_kwargs: b""),
-    )
-    sys.modules.setdefault("tqdm", types.SimpleNamespace(tqdm=_FakeTqdm))
-    sys.modules.pop("modules.model_downloader", None)
     return importlib.import_module("modules.model_downloader")
 
 
