@@ -99,6 +99,10 @@
 
 ## Мерж и тесты
 
+- Никогда не `git add -A` / `git commit -a` с новыми файлами в worktree: Orca кладёт
+  туда симлинк `.venv`, и при мерже он заменяет настоящее окружение в основном
+  checkout. Добавляй файлы явно и проверяй `git show --stat` перед мержем.
+
 - Основной checkout с веткой `main`: `/Users/kodoku/orca/Deep-Live-Cam`.
   Рабочий worktree координатора — ветка `undefeel/core`, от неё ветвятся
   дочерние worktree исполнителей.

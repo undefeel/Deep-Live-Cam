@@ -56,7 +56,7 @@ Python 3.10+ (локально `.venv` на Python 3.12), PySide6, OpenCV
 
 | #  | Файл                     | Содержание                     | Статус |
 | -- | ------------------------ | ------------------------------ | ------ |
-| 01 | `plan/01-hand-portal.md` | Hand Portal: от каркаса до UI  | todo   |
+| 01 | `plan/01-hand-portal.md` | Hand Portal: от каркаса до UI  | done   |
 
 ## Проверки перед мержем
 
