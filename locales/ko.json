@@ -44,5 +44,6 @@
     "Source x Target Mapper is already open.": "소스 x 타겟 매퍼가 이미 열려 있습니다.",
     "Hand Portal": "Hand Portal",
     "Portal filter:": "Portal filter:",
-    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Frame a filter portal between both hands; pinch all fingers to switch filter"
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Frame a filter portal between both hands; pinch all fingers to switch filter",
+    "Filter applied inside the hand portal": "포털 안에 적용되는 필터"
 }

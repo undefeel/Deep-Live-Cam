@@ -132,7 +132,7 @@ Perfect if you want the fastest setup with **zero manual installation**, pre-con
 
 **Interactive visual filter portal framed with your hands**
 
-The Hand Portal detects two hands to frame a quadrilateral portal between your thumb and index fingertips, applying an visual filter inside the portal area and drawing a bounding outline around it.
+The Hand Portal detects two hands to frame a quadrilateral portal between your thumb and index fingertips, applying a visual filter inside the portal area and drawing a bounding outline around it.
 
 - **Enable in UI:** Open **Options** and toggle the **"Hand Portal"** switch. Select the desired filter from the **"Portal filter:"** dropdown menu.
 - **Pinch Gesture:** Pinch all five fingertips of one hand together to cycle to the next filter on the fly (active in live webcam preview mode).

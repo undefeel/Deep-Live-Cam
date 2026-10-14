@@ -42,7 +42,8 @@
     "All mappings cleared!": "Все сопоставления очищены!",
     "Mappings successfully submitted!": "Сопоставления успешно отправлены!",
     "Source x Target Mapper is already open.": "Сопоставитель Источник-Цель уже открыт.",
-    "Hand Portal": "Ручной портал",
+    "Hand Portal": "Портал из рук",
     "Portal filter:": "Фильтр портала:",
-    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Создайте фильтр-портал между двумя руками; соедините все пальцы в щепоть для смены фильтра"
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Создайте фильтр-портал между двумя руками; соедините все пальцы в щепоть для смены фильтра",
+    "Filter applied inside the hand portal": "Фильтр, применяемый внутри портала"
 }

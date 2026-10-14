@@ -45,5 +45,6 @@
     "Source x Target Mapper is already open.": "Quell-zu-Ziel-Zuordnung ist bereits geöffnet.",
     "Hand Portal": "Hand-Portal",
     "Portal filter:": "Portal-Filter:",
-    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Rahmen Sie ein Filterportal zwischen beiden Händen ein; alle Finger zusammendrücken, um den Filter zu wechseln"
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Rahmen Sie ein Filterportal zwischen beiden Händen ein; alle Finger zusammendrücken, um den Filter zu wechseln",
+    "Filter applied inside the hand portal": "Filter, der innerhalb des Portals angewendet wird"
 }

@@ -45,5 +45,6 @@
     "Source x Target Mapper is already open.": "源 x 目标映射器已打开。",
     "Hand Portal": "Hand Portal",
     "Portal filter:": "Portal filter:",
-    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Frame a filter portal between both hands; pinch all fingers to switch filter"
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Frame a filter portal between both hands; pinch all fingers to switch filter",
+    "Filter applied inside the hand portal": "手势传送门内应用的滤镜"
 }
