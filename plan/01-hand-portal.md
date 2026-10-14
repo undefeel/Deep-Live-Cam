@@ -2,6 +2,7 @@
 
 Статус подплана: **in_progress** (ок получен 2026-10-14).
 Run Orca: `run_9e29e1247d44`
+Dispatch волны 2: 01-03 `ctx_ce466f22f0f6`, 01-04 `ctx_264a1b6985ca`, 01-05 `ctx_0eb76aabea46`, 01-06 `ctx_54ff26115b34`.
 
 Исполнитель `haiku` = `--agent claude --model claude-haiku-5-5` (Haiku 5.5).
 
@@ -99,7 +100,7 @@ worktree через `orca.yaml`.
 
 ### 01-03 — Фрейм-процессор и CLI
 
-- **Исполнитель:** haiku · **Статус:** in_progress · **Зависимости:** 01-02 · **Orca:** `task_258d6022d063`
+- **Исполнитель:** haiku · **Статус:** done · **Зависимости:** 01-02 · **Orca:** `task_258d6022d063`
 - **Файлы:** `modules/processors/frame/hand_portal.py` (новый),
   `modules/processors/frame/core.py` (только `ALLOWED_PROCESSORS`),
   `modules/core.py` (только argparse и разбор аргументов),
