@@ -128,6 +128,21 @@ Perfect if you want the fastest setup with **zero manual installation**, pre-con
   <video src="https://github.com/user-attachments/assets/2e9b9b82-fa04-4b70-9f56-b1f68e7672d0" width="450" controls></video>
 </p>
 
+### Hand Portal
+
+**Interactive visual filter portal framed with your hands**
+
+The Hand Portal detects two hands to frame a quadrilateral portal between your thumb and index fingertips, applying an visual filter inside the portal area and drawing a bounding outline around it.
+
+- **Enable in UI:** Open **Options** and toggle the **"Hand Portal"** switch. Select the desired filter from the **"Portal filter:"** dropdown menu.
+- **Pinch Gesture:** Pinch all five fingertips of one hand together to cycle to the next filter on the fly (active in live webcam preview mode).
+- **Available Filters:** `purple`, `grayscale`, `negative`, `sketch`, `thermal`, `sepia`, `pixelate`, `cool`.
+- **Automatic Model Download:** The MediaPipe hand landmarker model (`hand_landmarker.task`, ~8 MB) is downloaded automatically into the `models/` directory on first use.
+- **CLI Usage:**
+  ```bash
+  python run.py -s face.jpg -t video.mp4 -o out.mp4 --frame-processor face_swapper hand_portal --hand-portal-filter thermal
+  ```
+
 ## Installation (Manual)
 
 **Please be aware that the installation requires technical skills and is not for beginners. Consider downloading the quickstart version.**

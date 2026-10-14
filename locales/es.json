@@ -42,5 +42,8 @@
     "Select Camera:": "Elegir cámara:",
     "All mappings cleared!": "¡Todos los mapeos fueron borrados!",
     "Mappings successfully submitted!": "Mapeos enviados con éxito!",
-    "Source x Target Mapper is already open.": "El mapeador de fuente x destino ya está abierto."
+    "Source x Target Mapper is already open.": "El mapeador de fuente x destino ya está abierto.",
+    "Hand Portal": "Portal de manos",
+    "Portal filter:": "Filtro del portal:",
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Enmarca un portal de filtro entre ambas manos; junta todos los dedos para cambiar de filtro"
 }

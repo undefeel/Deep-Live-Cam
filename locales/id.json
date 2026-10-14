@@ -41,5 +41,8 @@
     "Select Camera:": "Pilih Kamera:",
     "All mappings cleared!": "Semua pemetaan telah dibersihkan!",
     "Mappings successfully submitted!": "Pemetaan berhasil dikirim!",
-    "Source x Target Mapper is already open.": "Pemetaan Sumber x Target sudah terbuka."
+    "Source x Target Mapper is already open.": "Pemetaan Sumber x Target sudah terbuka.",
+    "Hand Portal": "Hand Portal",
+    "Portal filter:": "Portal filter:",
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Frame a filter portal between both hands; pinch all fingers to switch filter"
 }

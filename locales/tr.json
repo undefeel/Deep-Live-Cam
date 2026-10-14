@@ -78,5 +78,8 @@
     "Face could not be detected in last upload!": "Son yüklenen dosyada yüz algılanamadı!",
     "All mappings cleared!": "Tüm eşleştirmeler temizlendi!",
     "Mappings successfully submitted!": "Eşleştirmeler başarıyla onaylandı!",
-    "Source x Target Mapper is already open.": "Kaynak x Hedef Eşleştirici zaten açık."
+    "Source x Target Mapper is already open.": "Kaynak x Hedef Eşleştirici zaten açık.",
+    "Hand Portal": "Hand Portal",
+    "Portal filter:": "Portal filter:",
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Frame a filter portal between both hands; pinch all fingers to switch filter"
 }

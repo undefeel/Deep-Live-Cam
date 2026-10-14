@@ -41,5 +41,8 @@
     "Select Camera:": "Выберите камеру:",
     "All mappings cleared!": "Все сопоставления очищены!",
     "Mappings successfully submitted!": "Сопоставления успешно отправлены!",
-    "Source x Target Mapper is already open.": "Сопоставитель Источник-Цель уже открыт."
+    "Source x Target Mapper is already open.": "Сопоставитель Источник-Цель уже открыт.",
+    "Hand Portal": "Ручной портал",
+    "Portal filter:": "Фильтр портала:",
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Создайте фильтр-портал между двумя руками; соедините все пальцы в щепоть для смены фильтра"
 }

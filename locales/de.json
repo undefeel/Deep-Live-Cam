@@ -42,5 +42,8 @@
     "Select Camera:": "Kamera auswählen:",
     "All mappings cleared!": "Alle Zuordnungen gelöscht!",
     "Mappings successfully submitted!": "Zuordnungen erfolgreich übermittelt!",
-    "Source x Target Mapper is already open.": "Quell-zu-Ziel-Zuordnung ist bereits geöffnet."
+    "Source x Target Mapper is already open.": "Quell-zu-Ziel-Zuordnung ist bereits geöffnet.",
+    "Hand Portal": "Hand-Portal",
+    "Portal filter:": "Portal-Filter:",
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Rahmen Sie ein Filterportal zwischen beiden Händen ein; alle Finger zusammendrücken, um den Filter zu wechseln"
 }
