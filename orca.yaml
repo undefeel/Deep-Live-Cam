@@ -1,0 +1,5 @@
+worktree:
+  # Gitignored-каталоги из основного checkout, которые Orca подключает в новые worktree как symlink.
+  # Каталоги, которых нет в основном checkout, Orca пропускает.
+  sharedDirectories:
+    - .venv
