@@ -30,7 +30,7 @@ worktree через `orca.yaml`.
 
 ### 01-01 — Зависимости и загрузка модели
 
-- **Исполнитель:** haiku · **Статус:** todo · **Зависимости:** — · **Orca:** `task_c1bf43d9ebd0`
+- **Исполнитель:** haiku · **Статус:** done · **Зависимости:** — · **Orca:** `task_c1bf43d9ebd0`
 - **Файлы:** `requirements.txt`, `modules/model_downloader.py`,
   `tests/test_model_downloader_external_url.py` (новый)
 - **Описание:**
@@ -48,7 +48,7 @@ worktree через `orca.yaml`.
 
 ### 01-02 — Ядро `modules/hand_portal.py`
 
-- **Исполнитель:** haiku · **Статус:** todo · **Зависимости:** 01-01 · **Orca:** `task_be6c033bc45d`
+- **Исполнитель:** haiku · **Статус:** in_progress · **Зависимости:** 01-01 · **Orca:** `task_be6c033bc45d`
 - **Файлы:** `modules/hand_portal.py` (новый), `modules/globals.py`,
   `tests/test_hand_portal.py` (новый)
 - **Описание:** вся логика портала в одном модуле. Публичный API (имена
