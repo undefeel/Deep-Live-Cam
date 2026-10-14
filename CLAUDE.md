@@ -10,10 +10,10 @@
 
 | Исполнитель   | Команда запуска                                                            | Для чего                                                     |
 | ------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| `haiku`       | `--agent claude --model haiku`                                             | логика, бэкенд, тесты                                        |
+| `haiku`       | `--agent claude --model claude-haiku-5-5`                                             | логика, бэкенд, тесты                                        |
 | `antigravity` | `--agent antigravity` (без `--model`, модель из настроек Antigravity)      | простые изолированные задачи, вёрстка, документация, конфиги |
 
-- ID модели Haiku: `haiku` (проверено 2026-10-14: `launch.effective.model = "haiku"`).
+- ID модели Haiku: `claude-haiku-5-5` (Haiku 5.5, явный ID по требованию пользователя; алиас `haiku` не использовать).
 - Вместо Gemini CLI используется Antigravity (`agy`): `gemini` в системе не
   установлен. Везде, где говорится «gemini», имеется в виду `antigravity`.
 - После запуска сверяй `launch.requested` с `launch.effective` в ответе
@@ -54,7 +54,7 @@
 3. Все задачи с выполненными зависимостями запускай одновременно, каждую
    в новом дочернем worktree:
    ```
-   orca orchestration worker-start --task <task_id> --worktree new-child --name <NN-MM-slug> --agent claude --model haiku --json
+   orca orchestration worker-start --task <task_id> --worktree new-child --name <NN-MM-slug> --agent claude --model claude-haiku-5-5 --json
    orca orchestration worker-start --task <task_id> --worktree new-child --name <NN-MM-slug> --agent antigravity --json
    ```
    Одновременно не больше 4 исполнителей. Если `worker-start` завершился
