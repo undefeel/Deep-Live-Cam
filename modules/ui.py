@@ -1409,6 +1409,7 @@ class WebcamPreviewWindow(QWidget):
         )
         self._capture_worker.start()
         self._processing_worker.start()
+        modules.globals.webcam_preview_running = True
 
         # Poll at ~2x camera fps so we never block but also don't burn CPU.
         poll_ms = max(1, min(16, int(500 / max(camera_fps, 1))))
@@ -1430,6 +1431,7 @@ class WebcamPreviewWindow(QWidget):
     def closeEvent(self, event) -> None:
         # __init__ can bail out before these exist (e.g. the camera fails to open),
         # and closeEvent still runs.
+        modules.globals.webcam_preview_running = False
         stop_event = getattr(self, "_stop_event", None)
         if stop_event is not None:
             stop_event.set()
