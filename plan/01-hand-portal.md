@@ -123,7 +123,7 @@ worktree через `orca.yaml`.
 
 ### 01-04 — Интеграция в UI
 
-- **Исполнитель:** haiku · **Статус:** in_progress · **Зависимости:** 01-02 · **Orca:** `task_3fb88cfaafa4`
+- **Исполнитель:** haiku · **Статус:** done · **Зависимости:** 01-02 · **Orca:** `task_3fb88cfaafa4`
 - **Файлы:** `modules/ui.py` (только точки интеграции)
 - **Описание:** в `_build_options_card` добавить переключатель `_Switch`
   «Hand Portal» (tooltip: «Frame a filter portal between both hands; pinch all
