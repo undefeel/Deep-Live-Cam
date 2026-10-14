@@ -41,5 +41,9 @@
     "Select Camera:": "카메라 선택:",
     "All mappings cleared!": "모든 매핑이 삭제되었습니다!",
     "Mappings successfully submitted!": "매핑이 성공적으로 제출되었습니다!",
-    "Source x Target Mapper is already open.": "소스 x 타겟 매퍼가 이미 열려 있습니다."
+    "Source x Target Mapper is already open.": "소스 x 타겟 매퍼가 이미 열려 있습니다.",
+    "Hand Portal": "Hand Portal",
+    "Portal filter:": "Portal filter:",
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Frame a filter portal between both hands; pinch all fingers to switch filter",
+    "Filter applied inside the hand portal": "포털 안에 적용되는 필터"
 }

@@ -41,5 +41,9 @@
     "Select Camera:": "ជ្រើសរើសកាមេរ៉ា",
     "All mappings cleared!": "ផែនទីទាំងអស់ត្រូវបានសម្អាត!",
     "Mappings successfully submitted!": "ផែនទីត្រូវបានបញ្ជូនជោគជ័យ!",
-    "Source x Target Mapper is already open.": "ប្រភព x Target Mapper បានបើករួចហើយ។"
+    "Source x Target Mapper is already open.": "ប្រភព x Target Mapper បានបើករួចហើយ។",
+    "Hand Portal": "Hand Portal",
+    "Portal filter:": "Portal filter:",
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Frame a filter portal between both hands; pinch all fingers to switch filter",
+    "Filter applied inside the hand portal": "Filter applied inside the hand portal"
 }

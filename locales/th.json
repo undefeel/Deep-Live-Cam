@@ -41,5 +41,9 @@
     "Select Camera:": "เลือกกล้อง:",
     "All mappings cleared!": "ล้างการจับคู่ทั้งหมดแล้ว!",
     "Mappings successfully submitted!": "ส่งการจับคู่สำเร็จแล้ว!",
-    "Source x Target Mapper is already open.": "ตัวจับคู่ต้นทาง x ปลายทาง เปิดอยู่แล้ว"
+    "Source x Target Mapper is already open.": "ตัวจับคู่ต้นทาง x ปลายทาง เปิดอยู่แล้ว",
+    "Hand Portal": "Hand Portal",
+    "Portal filter:": "Portal filter:",
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Frame a filter portal between both hands; pinch all fingers to switch filter",
+    "Filter applied inside the hand portal": "Filter applied inside the hand portal"
 }

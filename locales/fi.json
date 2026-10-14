@@ -42,5 +42,9 @@
     "Select Camera:": "Valitse Kamera:",
     "All mappings cleared!": "Kaikki kartoitukset tyhjennetty!",
     "Mappings successfully submitted!": "Kartoitukset lähetety onnistuneesti!",
-    "Source x Target Mapper is already open.": "Lähde x Kohde Kartoittaja on jo auki."
+    "Source x Target Mapper is already open.": "Lähde x Kohde Kartoittaja on jo auki.",
+    "Hand Portal": "Hand Portal",
+    "Portal filter:": "Portal filter:",
+    "Frame a filter portal between both hands; pinch all fingers to switch filter": "Frame a filter portal between both hands; pinch all fingers to switch filter",
+    "Filter applied inside the hand portal": "Portaalin sisällä käytettävä suodatin"
 }
