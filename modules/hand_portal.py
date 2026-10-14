@@ -81,9 +81,68 @@ def _negative(frame: np.ndarray) -> np.ndarray:
     return 255 - frame
 
 
+def _sketch(frame: np.ndarray) -> np.ndarray:
+    """Pencil sketch effect using grayscale, inverted blur, and color dodge."""
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    inverted = 255 - gray
+    h, w = frame.shape[:2]
+    max_k = min(h, w)
+    k = min(21, max_k)
+    if k % 2 == 0:
+        k -= 1
+    k = max(1, k)
+    blurred = cv2.GaussianBlur(inverted, (k, k), 0)
+    sketch_gray = cv2.divide(gray, 255 - blurred, scale=256)
+    return cv2.cvtColor(sketch_gray, cv2.COLOR_GRAY2BGR)
+
+
+def _thermal(frame: np.ndarray) -> np.ndarray:
+    """Thermal false-color effect using JET colormap on grayscale."""
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    return cv2.applyColorMap(gray, cv2.COLORMAP_JET)
+
+
+def _sepia(frame: np.ndarray) -> np.ndarray:
+    """Classic sepia tone effect using BGR color matrix transformation."""
+    matrix = np.array(
+        [
+            [0.131, 0.534, 0.272],
+            [0.168, 0.686, 0.349],
+            [0.189, 0.769, 0.393],
+        ],
+        dtype=np.float32,
+    )
+    transformed = cv2.transform(frame, matrix)
+    return np.clip(transformed, 0, 255).astype(np.uint8)
+
+
+def _pixelate(frame: np.ndarray) -> np.ndarray:
+    """Pixelated mosaic effect by downscaling and nearest-neighbor upscaling."""
+    h, w = frame.shape[:2]
+    small = cv2.resize(
+        frame,
+        (max(1, w // 12), max(1, h // 12)),
+        interpolation=cv2.INTER_LINEAR,
+    )
+    return cv2.resize(small, (w, h), interpolation=cv2.INTER_NEAREST)
+
+
+def _cool(frame: np.ndarray) -> np.ndarray:
+    """Blue-teal cool shift boosting B/G channels and reducing R channel."""
+    b = frame[:, :, 0].astype(np.float32) * 1.2 + 20.0
+    g = frame[:, :, 1].astype(np.float32) * 1.1 + 10.0
+    r = frame[:, :, 2].astype(np.float32) * 0.6
+    return np.clip(np.stack([b, g, r], axis=2), 0, 255).astype(np.uint8)
+
+
 register_filter("purple", _purple)
 register_filter("grayscale", _grayscale)
 register_filter("negative", _negative)
+register_filter("sketch", _sketch)
+register_filter("thermal", _thermal)
+register_filter("sepia", _sepia)
+register_filter("pixelate", _pixelate)
+register_filter("cool", _cool)
 
 # --- Geometry ----------------------------------------------------------------
 

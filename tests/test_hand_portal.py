@@ -71,7 +71,6 @@ class FilterRegistryTests(unittest.TestCase):
         names = hand_portal.filter_names()
         self.assertEqual(hand_portal.next_filter(names[-1]), names[0])
         self.assertEqual(hand_portal.next_filter("purple"), "grayscale")
-        self.assertEqual(hand_portal.next_filter("negative"), "purple")
 
     def test_next_filter_unknown_name_gives_first(self):
         self.assertEqual(hand_portal.next_filter("nope"), hand_portal.filter_names()[0])
