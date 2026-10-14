@@ -13,7 +13,14 @@ from modules.paths import MODELS_DIR
 HF_REPO_ID = "hacksider/deep-live-cam"
 HF_RESOLVE_BASE = f"https://huggingface.co/{HF_REPO_ID}/resolve/main/"
 
+# Models hosted outside the HF repo. Keys use the same names as MODEL_SIZES;
+# resolve_url() checks this mapping first and falls back to HF_RESOLVE_BASE.
+MODEL_URLS: Dict[str, str] = {
+    "hand_landmarker.task": "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/latest/hand_landmarker.task",
+}
+
 MODEL_SIZES: Dict[str, int] = {
+    "hand_landmarker.task": 7819105,
     "inswapper_128.onnx": 554253681,
     "inswapper_128_fp16.onnx": 277680638,
     "gfpgan-1024.onnx": 365875079,
@@ -50,7 +57,10 @@ def _lock_for(key: str) -> threading.Lock:
 
 
 def resolve_url(name: str) -> str:
-    return HF_RESOLVE_BASE + name.replace(os.sep, "/")
+    normalized = name.replace(os.sep, "/")
+    if normalized in MODEL_URLS:
+        return MODEL_URLS[normalized]
+    return HF_RESOLVE_BASE + normalized
 
 
 def local_path(name: str, dest_dir: Optional[str] = None) -> str:
