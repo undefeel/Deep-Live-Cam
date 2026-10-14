@@ -45,6 +45,10 @@ camera_input_combobox: Any | None = None # Placeholder for UI element if needed
 webcam_preview_running: bool = False
 show_fps: bool = False
 
+# Hand Portal Options
+hand_portal: bool = False          # Enable the two-hand portal filter effect
+hand_portal_filter: str = "purple" # Filter applied inside the portal (name from hand_portal.FILTERS)
+
 # System Configuration
 max_memory: int | None = None        # Memory limit in GB? (Needs clarification)
 execution_providers: List[str] = []  # e.g., ['CUDAExecutionProvider', 'CPUExecutionProvider']
@@ -53,7 +57,7 @@ headless: bool | None = None         # Run without UI?
 log_level: str = "error"             # Logging level (e.g., 'debug', 'info', 'warning', 'error')
 
 # Face Processor UI Toggles (Example)
-fp_ui: Dict[str, bool] = {"face_enhancer": False, "face_enhancer_gpen256": False, "face_enhancer_gpen512": False}
+fp_ui: Dict[str, bool] = {"face_enhancer": False, "face_enhancer_gpen256": False, "face_enhancer_gpen512": False, "hand_portal": False}
 
 # Face Swapper Specific Options
 face_swapper_enabled: bool = True # General toggle for the swapper processor
